@@ -22,7 +22,7 @@ jobs:
             ${{ runner.os }}-gradle-
 
       - name: Gradle build
-        run: ./gradlew build
+        run: ./gradlew build shadowJar
 
       - name: Cleanup Gradle Cache
         # Remove some files from the Gradle cache, so they aren't cached by GitHub Actions.
@@ -35,8 +35,15 @@ jobs:
         id: package
         run: |
           mkdir packages
-          mv build/libs/*.jar packages/
+          mv build/libs/*-all.jar packages/
           cd packages
+          
+          for file in `ls|grep .jar`
+          do
+            newfile=`echo $file | sed 's/-all//g'`
+            echo $newfile
+            mv $file $newfile
+          done
 
           for file in `ls|grep .jar`
           do
@@ -56,6 +63,6 @@ jobs:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           automatic_release_tag: "${{ steps.package.outputs.VERSION }}"
           prerelease: true
-          title: "CI automatical build ${{ steps.package.outputs.VERSION }}"
+          title: "Bukkit Message Source ${{ steps.package.outputs.VERSION }}"
           files: |
             packages/*.jar
