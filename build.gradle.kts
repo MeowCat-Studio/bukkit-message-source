@@ -53,8 +53,8 @@ dependencies {
    compileOnly("net.md-5:bungeecord-chat:1.16-R0.3")
 
    // websocket
-   implementation("com.github.meowcat-studio:message-forwarding-client:0.0.1")
-   implementation("com.github.meowcat-studio:handy-dandy:0.0.5")
+   implementation("org.meowcat:message-forwarding-client:0.1.0")
+   implementation("org.meowcat:handy-dandy:0.1.0")
 
    implementation(Dependency.Ktor.Client.WebSocket)
    implementation(Dependency.Ktor.Client.CIO)
