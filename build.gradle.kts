@@ -15,7 +15,7 @@ plugins {
 }
 
 group = "org.meowcat"
-version = "0.1.0"
+version = "0.1.1"
 val mccoroutine = "0.0.6"
 repositories {
    mavenCentral()

@@ -1,0 +1,4 @@
+name: Mesagisto
+version: 0.1.1
+main: io.itsusinn.forward.bukkit.MessageForwardPlugin
+author: Itsusinn
